@@ -23,7 +23,48 @@ namespace SomeUI
             // InsertMultipleDifferentObjects();
             // GetListOfSamurais();
             // SimpleSamuraiQuery();
-            MoreQuerie();
+            // MoreQuerie();
+            // InsertNewPkFkGraph();
+            // AddChildToExitingObjectWhileTracked();
+            AddChildToExitingObjectWhileNotTracked(1);
+        }
+
+        private static void AddChildToExitingObjectWhileNotTracked(int samuraId)
+        {
+            Quote quote = new Quote
+                              {
+                                  Text = "Now that I saved you, wil you feed me dinner?",
+                                  SamuraiId = samuraId
+                              };
+            using (SamuraiContext newContext = new SamuraiContext())
+            {
+                newContext.Quotes.Add(quote);
+                newContext.SaveChanges();
+            }
+
+        }
+
+        private static void AddChildToExitingObjectWhileTracked()
+        {
+            Samurai samurai = _context.Samurais.First();
+            samurai.Quotes.Add(new Quote { Text = "I bet you'are happy that I´ve saved you!" });
+            _context.SaveChanges();
+        }
+
+        private static void InsertNewPkFkGraph()
+        {
+            Samurai samurai = new Samurai
+            { Name = "Kambei Shimada", Quotes = new List<Quote>
+            { new Quote
+                  {
+                      Text = "I´ve come to save you" 
+                      
+                  } 
+            } 
+            };
+
+            _context.Samurais.Add(samurai);
+            _context.SaveChanges();
         }
 
         private static void GetListOfSamurais()
