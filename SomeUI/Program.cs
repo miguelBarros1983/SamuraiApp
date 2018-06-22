@@ -8,6 +8,7 @@ namespace SomeUI
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Internal;
+    using Microsoft.EntityFrameworkCore.Query;
 
     using SamuraiApp.Data;
     using SamuraiApp.Domain;
@@ -26,7 +27,29 @@ namespace SomeUI
             // MoreQuerie();
             // InsertNewPkFkGraph();
             // AddChildToExitingObjectWhileTracked();
-            AddChildToExitingObjectWhileNotTracked(1);
+            // AddChildToExitingObjectWhileNotTracked(1);
+            // EagerLoadSamuraiWithQuotes();
+            // List<dynamic> dynamicList = ProjectDymanic();
+            // FilteringWithRelatedData();
+        }
+
+        private static void FilteringWithRelatedData()
+        {
+            List<Samurai> samurai = _context.Samurais.Where(s => s.Quotes.Any(q => q.Text.Contains("happy"))).ToList();
+        }
+
+        private static List<dynamic> ProjectDymanic()
+        {
+            var someProperties = _context.Samurais.Select(s => new { s.Id, s.Name }).ToList();
+            return someProperties.ToList<dynamic>();
+        }
+
+        private static void EagerLoadSamuraiWithQuotes()
+        {
+            Samurai samuraiWithQuotes = _context.Samurais.Where(s => s.Name.Contains("Julie"))
+                .Include(s => s.Quotes)
+                .Include(s => s.SecretIidentity)
+                .FirstOrDefault();
         }
 
         private static void AddChildToExitingObjectWhileNotTracked(int samuraId)
