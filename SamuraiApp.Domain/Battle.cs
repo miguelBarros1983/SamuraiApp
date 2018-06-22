@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace SamuraiApp.Domain
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Battle
     {
         public int Id { get; set; }

@@ -133,7 +133,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Migrations\20180621094357_initial.cs" />
     <Compile Include="Migrations\20180621094357_initial.designer.cs">
       <DependentUpon>20180621094357_initial.cs</DependentUpon>

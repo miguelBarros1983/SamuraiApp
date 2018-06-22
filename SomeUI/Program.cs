@@ -4,12 +4,8 @@ namespace SomeUI
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Runtime.CompilerServices;
 
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Internal;
-    using Microsoft.EntityFrameworkCore.Query;
-
     using SamuraiApp.Data;
     using SamuraiApp.Domain;
 
